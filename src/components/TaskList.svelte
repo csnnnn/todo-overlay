@@ -19,6 +19,18 @@
 
   let itemsListElement;
 
+  const getBottomScrollTarget = () => {
+    if (!itemsListElement) return 0;
+
+    const lastItem = itemsListElement.lastElementChild as HTMLElement | null;
+    if (!lastItem) return 0;
+
+    return Math.max(
+      0,
+      lastItem.offsetTop + lastItem.offsetHeight - itemsListElement.clientHeight
+    );
+  };
+
   onMount(() => {
     var scrollToTop = false;
 
@@ -29,8 +41,9 @@
           duration: scrollingDuration
         });
       } else {
-        animateScroll.scrollToBottom({
+        animateScroll.scrollTo({
           container: itemsListElement,
+          y: getBottomScrollTarget(),
           duration: scrollingDuration
         });
       }
@@ -46,12 +59,16 @@
   }
 
   .transparent-container {
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - 8px);
     overflow: hidden;
     box-sizing: border-box;
   }
 
   .panel-container {
+    display: flex;
+    flex-direction: column;
     height: calc(100vh - 8px);
     overflow: hidden;
     box-sizing: border-box;
@@ -73,7 +90,8 @@
   }
 
   .items-holder {
-    height: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: hidden;
     overflow-x: hidden;
     padding-top: 0.5rem;
@@ -86,6 +104,7 @@
 
   .nes-container.with-title > .title {
     display: inline-block;
+    flex: 0 0 auto;
     margin: 0 0 0.75rem 0;
     position: relative;
     left: 0;
@@ -94,6 +113,7 @@
 
   .transparent-container.with-title > .title {
     display: inline-block;
+    flex: 0 0 auto;
     margin: 0 0 0.75rem 0;
     position: relative;
     left: 0;
@@ -102,6 +122,7 @@
 
   .panel-container.with-title > .title {
     display: inline-block;
+    flex: 0 0 auto;
     margin: 0 0 0.75rem 0;
     position: relative;
     left: 0;
