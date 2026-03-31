@@ -226,10 +226,6 @@ Different `command` values use separate saved lists, so you can run multiple ove
 
 ## Credits
 
-This project is based on [negue/todo-overlay](https://github.com/negue/todo-overlay) and keeps the original MIT license.
-
-## Acknowledgements
-
-This project is based on [negue/todo-overlay](https://github.com/negue/todo-overlay), created by its original author and contributors.
+This project is based on [negue/todo-overlay](https://github.com/negue/todo-overlay), created by its original author and contributors, and keeps the original MIT license.
 
 This customized version builds on their work while adding new styles, font controls, timer behavior changes, and overlay refinements.
