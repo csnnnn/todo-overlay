@@ -17,7 +17,7 @@
     taskListOptions,
     currentHighlight,
     currentTimer
-  } = createStore(queryOptions.command);
+  } = createStore(queryOptions.channelName, queryOptions.command);
 
   ComfyJS.onCommand = (user, command, message, flags, extra) => {
     if ((flags.broadcaster || flags.mod) && command === queryOptions.command) {

@@ -5,9 +5,15 @@ import type { TodoList } from './types/list';
 const previousOptionsKey = 'options';
 const previousItemsKey = 'items';
 
-export function createStore(command: string) {
-  const commandOptionsKey = `${command}_options`;
-  const commandItemsKey = `${command}_items`;
+function getStorageNamespace(channelName: string, command: string) {
+  const normalizedChannelName = (channelName || 'default').trim().toLowerCase();
+  return `${normalizedChannelName}_${command}`;
+}
+
+export function createStore(channelName: string, command: string) {
+  const storageNamespace = getStorageNamespace(channelName, command);
+  const commandOptionsKey = `${storageNamespace}_options`;
+  const commandItemsKey = `${storageNamespace}_items`;
 
   let commandOptionsValue = normalizeTaskListOptions(readJsonFromStorage(commandOptionsKey, null));
 
