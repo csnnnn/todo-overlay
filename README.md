@@ -46,7 +46,7 @@ http://localhost:5000/?channelName=yourName
 Required query:
 
 ```url
-http://csn.github.io/?channelName=yourName
+https://csnnnn.github.io/?channelName=yourName
 ```
 
 Available query options:
@@ -62,7 +62,7 @@ Available query options:
 Example:
 
 ```url
-http://csn.github.io/?channelName=yourName&command=todo&layout=auto
+https://csnnnn.github.io/todo-overlay/?channelName=yourName&command=todo&layout=auto
 ```
 
 Notes:
