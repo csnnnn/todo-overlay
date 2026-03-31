@@ -102,6 +102,15 @@
     box-sizing: border-box;
   }
 
+  .items-holder :global(.entry:last-child) {
+    margin-bottom: 0;
+    box-shadow: none;
+  }
+
+  .items-holder :global(.entry:last-child.entry-highlighted) {
+    box-shadow: 0 0 0 3px var(--highlight-ring, #f7d51d);
+  }
+
   .nes-container.with-title > .title {
     display: inline-block;
     flex: 0 0 auto;
@@ -165,7 +174,7 @@
   .theme-shell .panel-container {
     background: var(--panel-bg);
     border: 4px solid var(--panel-border);
-    box-shadow: 8px 8px 0 var(--shadow-color);
+    box-shadow: none;
     border-radius: var(--panel-radius);
     padding: var(--panel-padding);
     box-sizing: border-box;
