@@ -1,5 +1,5 @@
 import type { TodoItem } from "./types/item";
-import { get, Writable } from "svelte/store";
+import type { Writable } from "svelte/store";
 import type { TodoList } from "./types/list";
 
 // todo tests
@@ -16,8 +16,9 @@ export function handleCommand(message: string,
     case "new": {
       // TODO extract item store operations
       items.set([]);
-      taskListOptions.update(() => {
+      taskListOptions.update(currentOptions => {
         return {
+          ...currentOptions,
           name: realContent
         };
       });
@@ -93,7 +94,17 @@ export function handleCommand(message: string,
     }
     case "hl":
     case "highlight": {
+      if (!realContent.trim()) {
+        currentHighlight.update(_ => -1);
+        break;
+      }
+
       const indexId = stringIdToIndexId(realContent);
+
+      if (indexId === null) {
+        currentHighlight.update(_ => -1);
+        break;
+      }
 
       currentHighlight.update(value => {
         if (value === indexId) {
@@ -185,10 +196,16 @@ export function handleCommand(message: string,
 
       const targetIndex = stringIdToIndexId(targetIndexStr);
 
-      currentTimer.update(_ => targetIndex);
+      if (targetIndex === null) {
+        return;
+      }
 
       items.update(curItems => {
         const currentItem = curItems[targetIndex];
+        if (!currentItem) {
+          return curItems;
+        }
+
         currentItem.startTime = Date.now();
 
         return curItems;
@@ -202,31 +219,31 @@ export function handleCommand(message: string,
 
       const targetIndex = stringIdToIndexId(targetIndexStr);
 
-      currentTimer.update(currentItemIndex => {
+      if (targetIndex === null) {
+        return;
+      }
 
-        if (currentItemIndex == -1) {
-          currentItemIndex = targetIndex;
+      items.update(curItems => {
+        const currentItem = curItems[targetIndex];
+        if (!currentItem || !currentItem.startTime) {
+          return curItems;
         }
 
-        items.update(curItems => {
-          const currentItem = curItems[currentItemIndex];
+        if (!currentItem.spentTime) {
+          currentItem.spentTime = 0;
+        }
 
-          if (!currentItem.spentTime) {
-            currentItem.spentTime = 0;
-          }
+        const currentTime = Date.now();
 
-          const currentTime = Date.now();
+        // Add the difference but without milliseconds
+        currentItem.spentTime += (currentTime - currentItem.startTime) / 1000;
 
-          // Add the difference but without milliseconds
-          currentItem.spentTime += (currentTime - currentItem.startTime) / 1000;
+        currentItem.startTime = null;
 
-          currentItem.startTime = null;
-
-          return curItems;
-        });
-
-        return -1;
+        return curItems;
       });
+
+      currentTimer.update(_ => -1);
 
 
       break;
@@ -237,13 +254,15 @@ export function handleCommand(message: string,
 
       const targetIndex = stringIdToIndexId(targetIndexStr);
 
-      let currentItemIndex = get(currentTimer);
-      if (currentItemIndex == -1) {
-        currentItemIndex = targetIndex;
+      if (targetIndex === null) {
+        return;
       }
 
       items.update(curItems => {
-        const currentItem = curItems[currentItemIndex];
+        const currentItem = curItems[targetIndex];
+        if (!currentItem) {
+          return curItems;
+        }
 
         currentItem.spentTime = 0;
         if (currentItem.startTime) {
@@ -258,9 +277,45 @@ export function handleCommand(message: string,
 
     case "name": {
       taskListOptions.update(curObj => {
-        curObj.name = realContent;
+        return {
+          ...curObj,
+          name: realContent
+        };
+      });
 
-        return curObj;
+      break;
+    }
+
+    case "style": {
+      const styleVariant = Number(realContent);
+
+      if (!Number.isInteger(styleVariant) || styleVariant < 1 || styleVariant > 10) {
+        return;
+      }
+
+      taskListOptions.update(curObj => {
+        return {
+          ...curObj,
+          styleVariant,
+          fontVariant: null
+        };
+      });
+
+      break;
+    }
+
+    case "font": {
+      const fontVariant = Number(realContent);
+
+      if (!Number.isInteger(fontVariant) || fontVariant < 1 || fontVariant > 10) {
+        return;
+      }
+
+      taskListOptions.update(curObj => {
+        return {
+          ...curObj,
+          fontVariant
+        };
       });
 
       break;

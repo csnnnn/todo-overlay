@@ -9,13 +9,13 @@ export function createStore(command: string) {
   const commandOptionsKey = `${command}_options`;
   const commandItemsKey = `${command}_items`;
 
-  let commandOptionsValue = readJsonFromStorage(commandOptionsKey, null);
+  let commandOptionsValue = normalizeTaskListOptions(readJsonFromStorage(commandOptionsKey, null));
 
   if (commandOptionsValue === null) {
     // if the command store is empty, use the previous one
-    commandOptionsValue = readJsonFromStorage(previousOptionsKey, {
+    commandOptionsValue = normalizeTaskListOptions(readJsonFromStorage(previousOptionsKey, {
       name: `!${command} new Title`
-    } as TodoList);
+    } as TodoList));
 
 
     console.info({ commandOptionsValue });
@@ -60,4 +60,16 @@ function readJsonFromStorage(key: string, defaultValue: any) {
 
 function writeJsonToStorage(key: string, value: any) {
   localStorage.setItem(key, JSON.stringify(value));
+}
+
+function normalizeTaskListOptions(value: TodoList | null) {
+  if (value === null) {
+    return null;
+  }
+
+  return {
+    styleVariant: 1,
+    fontVariant: null,
+    ...value
+  };
 }

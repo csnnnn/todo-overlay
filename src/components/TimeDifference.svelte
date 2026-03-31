@@ -2,6 +2,7 @@
   import { onMount, onDestroy } from 'svelte';
   import { timeDifference } from '../utils';
   export let startDate: number;
+  export let baseSeconds = 0;
 
   let differenceInSeconds = 0;
   let timerInterval = 0;
@@ -12,10 +13,14 @@
       if (startDate) {
         console.info({ startDate });
 
-        differenceInSeconds = (Date.now() - startDate) / 1000;
+        differenceInSeconds = baseSeconds + ((Date.now() - startDate) / 1000);
       }
     }, 1000);
   });
+
+  $: if (startDate) {
+    differenceInSeconds = baseSeconds + ((Date.now() - startDate) / 1000);
+  }
 
   onDestroy(() => {
     clearInterval(timerInterval);

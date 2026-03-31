@@ -47,22 +47,19 @@
   body {
     overflow: hidden;
   }
-
-  * {
-    /* https://fonts.google.com/specimen/Press+Start+2P?query=Press+Start+2P */
-    font-family: 'Press Start 2P', Arial, sans-serif;
-  }
 </style>
 
 <main>
   <TaskList
     taskListName={$taskListOptions.name}
+    styleVariant={$taskListOptions.styleVariant || 1}
+    fontVariant={$taskListOptions.fontVariant ?? 0}
     items={$items}
     scrollingDuration={queryOptions.scrollingDuration}
     scrollingInterval={queryOptions.scrollingInterval}
     layout={queryOptions.layout}
     highlightItemIndex={$currentHighlight}
-    showOnlyItemIndex={$currentTimer} />
+    showOnlyItemIndex={-1} />
 </main>
 
 <!-- NES.css minified -->
@@ -70,5 +67,5 @@
 
 <!-- Press Start 2P - pixelated font <3 -->
 <link
-  href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:wght@600&family=DM+Serif+Display&family=Exo+2:wght@700&family=Fredoka:wght@600&family=Libre+Baskerville:wght@700&family=Oxanium:wght@600&family=Press+Start+2P&family=Rajdhani:wght@700&family=Russo+One&family=Space+Grotesk:wght@700&display=swap"
   rel="stylesheet" />
