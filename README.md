@@ -46,7 +46,7 @@ http://localhost:5000/?channelName=yourName
 Required query:
 
 ```url
-https://csnnnn.github.io/?channelName=yourName
+https://csnnnn.github.io/todo-overlay/?channelName=yourName
 ```
 
 Available query options:
@@ -227,3 +227,9 @@ Different `command` values use separate saved lists, so you can run multiple ove
 ## Credits
 
 This project is based on [negue/todo-overlay](https://github.com/negue/todo-overlay) and keeps the original MIT license.
+
+## Acknowledgements
+
+This project is based on [negue/todo-overlay](https://github.com/negue/todo-overlay), created by its original author and contributors.
+
+This customized version builds on their work while adding new styles, font controls, timer behavior changes, and overlay refinements.
