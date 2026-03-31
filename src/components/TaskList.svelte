@@ -47,10 +47,14 @@
 
   .transparent-container {
     height: calc(100vh - 8px);
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .panel-container {
     height: calc(100vh - 8px);
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
   .nes-container.auto-layout {
@@ -71,10 +75,13 @@
   .items-holder {
     height: 100%;
     overflow-y: hidden;
+    overflow-x: hidden;
     padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     padding-left: 0.2rem;
     padding-right: 0.2rem;
     margin-left: 0;
+    box-sizing: border-box;
   }
 
   .nes-container.with-title > .title {
