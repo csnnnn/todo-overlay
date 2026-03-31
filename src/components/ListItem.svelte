@@ -38,22 +38,31 @@
 
   .label-with-number {
     min-width: 0;
+    width: 100%;
     max-width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 0.9rem;
   }
 
   .label-main {
     min-width: 0;
+    flex: 1 1 auto;
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
+  }
+
+  .label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .timer-inline {
     flex: 0 0 auto;
+    align-self: flex-start;
     color: var(--badge-text, #ffffff);
     white-space: nowrap;
     text-align: right;
