@@ -104,11 +104,6 @@
 
   .items-holder :global(.entry:last-child) {
     margin-bottom: 0;
-    box-shadow: none;
-  }
-
-  .items-holder :global(.entry:last-child.entry-highlighted) {
-    box-shadow: 0 0 0 3px var(--highlight-ring, #f7d51d);
   }
 
   .nes-container.with-title > .title {
