@@ -151,6 +151,8 @@
     --title-font-size: 1rem;
     --item-font-size: 1rem;
     --number-font-size: 1rem;
+    --label-offset-y: 1px;
+    --number-offset-y: 1px;
     --title-letter-spacing: 0;
     --title-text-transform: none;
     --panel-radius: 0;
@@ -410,6 +412,31 @@
     --panel-padding: 0.9rem;
   }
 
+  .theme-shell.style-11 {
+    --panel-bg: radial-gradient(circle at 32% 34%, rgba(26, 163, 235, 0.78), rgba(6, 69, 119, 0.92) 44%, rgba(2, 31, 56, 0.98) 72%, rgba(1, 16, 31, 1) 100%);
+    --panel-border: #57d6ff;
+    --title-bg: transparent;
+    --title-color: #ffffff;
+    --item-bg: rgba(3, 14, 24, 0.82);
+    --item-border: rgba(87, 214, 255, 0.32);
+    --item-text: #f4fbff;
+    --number-color: #8cecff;
+    --check-color: #8cecff;
+    --badge-bg: rgba(5, 18, 30, 0.84);
+    --badge-text: #dff8ff;
+    --highlight-ring: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --list-font: 'Russo One', Arial, sans-serif;
+    --title-font-size: 1.38rem;
+    --item-font-size: 1.04rem;
+    --number-font-size: 1rem;
+    --title-letter-spacing: 0.08em;
+    --title-text-transform: uppercase;
+    --panel-radius: 26px;
+    --item-radius: 22px;
+    --panel-padding: 1rem;
+  }
+
   .theme-shell.style-5 :global(.nes-container) {
     background: transparent !important;
     background-image: none !important;
@@ -488,6 +515,18 @@
     box-shadow: none;
   }
 
+  .theme-shell.style-11 .panel-container {
+    border-width: 4px;
+    background-blend-mode: screen;
+  }
+
+  .theme-shell.style-11 .panel-container.with-title > .title {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: 0 0 20px rgba(87, 214, 255, 0.28);
+  }
+
   .theme-shell.style-10 .transparent-container {
     padding: var(--panel-padding);
   }
@@ -498,6 +537,8 @@
     --title-font-size: 1rem;
     --item-font-size: 1rem;
     --number-font-size: 1rem;
+    --label-offset-y: 1px;
+    --number-offset-y: 1px;
   }
 
   .theme-shell.font-2 {
@@ -505,6 +546,8 @@
     --title-font-size: 1.05rem;
     --item-font-size: 1.02rem;
     --number-font-size: 1rem;
+    --label-offset-y: 2px;
+    --number-offset-y: 2px;
   }
 
   .theme-shell.font-3 {
@@ -512,6 +555,8 @@
     --title-font-size: 1.08rem;
     --item-font-size: 1.05rem;
     --number-font-size: 1rem;
+    --label-offset-y: 2px;
+    --number-offset-y: 2px;
   }
 
   .theme-shell.font-4 {
@@ -519,6 +564,8 @@
     --title-font-size: 1.12rem;
     --item-font-size: 1.08rem;
     --number-font-size: 1.02rem;
+    --label-offset-y: 1px;
+    --number-offset-y: 1px;
   }
 
   .theme-shell.font-5 {
@@ -526,6 +573,8 @@
     --title-font-size: 1.08rem;
     --item-font-size: 1.05rem;
     --number-font-size: 1rem;
+    --label-offset-y: 1px;
+    --number-offset-y: 1px;
   }
 
   .theme-shell.font-6 {
@@ -533,6 +582,8 @@
     --title-font-size: 1.08rem;
     --item-font-size: 1.01rem;
     --number-font-size: 0.98rem;
+    --label-offset-y: 1px;
+    --number-offset-y: 1px;
   }
 
   .theme-shell.font-7 {
@@ -540,6 +591,8 @@
     --title-font-size: 1.08rem;
     --item-font-size: 1rem;
     --number-font-size: 0.98rem;
+    --label-offset-y: 1px;
+    --number-offset-y: 1px;
   }
 
   .theme-shell.font-8 {
@@ -547,6 +600,8 @@
     --title-font-size: 1.08rem;
     --item-font-size: 1rem;
     --number-font-size: 0.98rem;
+    --label-offset-y: 0px;
+    --number-offset-y: 0px;
   }
 
   .theme-shell.font-9 {
@@ -554,6 +609,8 @@
     --title-font-size: 1.08rem;
     --item-font-size: 1rem;
     --number-font-size: 0.98rem;
+    --label-offset-y: -1px;
+    --number-offset-y: -1px;
   }
 
   .theme-shell.font-10 {
@@ -561,6 +618,19 @@
     --title-font-size: 1.18rem;
     --item-font-size: 1.08rem;
     --number-font-size: 1rem;
+    --label-offset-y: 3px;
+    --number-offset-y: 3px;
+    --title-letter-spacing: 0.08em;
+    --title-text-transform: uppercase;
+  }
+
+  .theme-shell.font-11 {
+    --list-font: 'Russo One', Arial, sans-serif;
+    --title-font-size: 1.38rem;
+    --item-font-size: 1.04rem;
+    --number-font-size: 1rem;
+    --label-offset-y: 2px;
+    --number-offset-y: 2px;
     --title-letter-spacing: 0.08em;
     --title-text-transform: uppercase;
   }
@@ -618,6 +688,12 @@
   .theme-shell.font-10 .panel-container.with-title > .title {
     font-size-adjust: 0.54;
   }
+
+  .theme-shell.font-11 :global(.nes-container.with-title > .title),
+  .theme-shell.font-11 .transparent-container.with-title > .title,
+  .theme-shell.font-11 .panel-container.with-title > .title {
+    font-size-adjust: 0.56;
+  }
 </style>
 
 <div
@@ -632,6 +708,7 @@
   class:font-8={fontVariant === 8}
   class:font-9={fontVariant === 9}
   class:font-10={fontVariant === 10}
+  class:font-11={fontVariant === 11}
   data-style-variant={styleVariant}>
   {#if styleVariant === 5 || styleVariant === 10}
     <div class="transparent-container with-title" class:auto-layout={layout === 'auto'}>

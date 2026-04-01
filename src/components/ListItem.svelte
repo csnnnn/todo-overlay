@@ -50,14 +50,18 @@
     min-width: 0;
     flex: 1 1 auto;
     display: inline-flex;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
+    position: relative;
   }
 
   .label {
     min-width: 0;
     overflow-wrap: anywhere;
     word-break: break-word;
+    line-height: 1.15;
+    position: relative;
+    top: var(--label-offset-y, 0);
   }
 
   .timer-inline {
@@ -185,6 +189,27 @@
     letter-spacing: 0.06em;
   }
 
+  .style-11-entry {
+    backdrop-filter: blur(6px);
+    box-shadow: 0 14px 28px rgba(2, 12, 22, 0.32);
+  }
+
+  .style-11-entry.entry-highlighted {
+    box-shadow: 0 0 0 3px var(--highlight-ring, #ffffff), 0 14px 28px rgba(2, 12, 22, 0.38);
+  }
+
+  .style-11-entry .label {
+    font-weight: 700;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+  }
+
+  .style-11-entry .content-slot,
+  .style-11-entry .checkbox-slot {
+    align-self: center;
+  }
+
+
   .text-only-entry {
     padding: 0.22rem 0;
     margin-bottom: 0.45rem;
@@ -236,6 +261,8 @@
   .item-number {
     font-size: var(--number-font-size, 1rem);
     color: var(--number-color, #f7d51d);
+    position: relative;
+    top: var(--number-offset-y, 0);
   }
 
   .text-only-entry .timer-inline {
@@ -255,6 +282,7 @@
   class:style-8-entry={styleVariant === 8}
   class:style-9-entry={styleVariant === 9}
   class:style-10-entry={styleVariant === 10}
+  class:style-11-entry={styleVariant === 11}
   class:text-only-entry={styleVariant === 5}
   class:entry-highlighted={highlighted}
   class:entry-done={item.done}

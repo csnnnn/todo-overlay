@@ -289,7 +289,11 @@ export function handleCommand(message: string,
     case "style": {
       const styleVariant = Number(realContent);
 
-      if (!Number.isInteger(styleVariant) || styleVariant < 1 || styleVariant > 10) {
+      const isSupportedStyle = Number.isInteger(styleVariant)
+        && styleVariant >= 1
+        && styleVariant <= 11;
+
+      if (!isSupportedStyle) {
         return;
       }
 
@@ -307,7 +311,7 @@ export function handleCommand(message: string,
     case "font": {
       const fontVariant = Number(realContent);
 
-      if (!Number.isInteger(fontVariant) || fontVariant < 1 || fontVariant > 10) {
+      if (!Number.isInteger(fontVariant) || fontVariant < 1 || fontVariant > 11) {
         return;
       }
 
