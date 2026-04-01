@@ -6,8 +6,8 @@ A browser-based Twitch chat controlled todo list for OBS browser sources.
 
 This customized version extends the original project with:
 
-- `10` built-in visual styles
-- `10` font presets via chat command
+- `11` built-in visual styles
+- `11` font presets via chat command
 - transparent overlay modes
 - inline per-item timers
 - multi-timer support
@@ -17,8 +17,8 @@ This customized version extends the original project with:
 
 - Twitch chat controlled todo list for OBS browser sources
 - broadcaster and mod-only command control
-- `10` switchable visual styles with style-specific default fonts
-- `10` font overrides via chat command
+- `11` switchable visual styles with style-specific default fonts
+- `11` font overrides via chat command
 - transparent overlay variants for gameplay or camera scenes
 - per-item color control with NES.css color names or raw CSS colors
 - per-item timers rendered inline on the far right of each row
@@ -105,8 +105,8 @@ General syntax:
 
 | Command | Description |
 | - | - |
-| `style 1` to `style 10` | Switches the overlay style |
-| `font 1` to `font 10` | Overrides the current style font |
+| `style 1` to `style 11` | Switches the overlay style |
+| `font 1` to `font 11` | Overrides the current style font |
 | `color POSITION COLOR` | Applies an NES.css text color or custom CSS color |
 
 Supported `color` values:
@@ -152,6 +152,7 @@ Timer behavior:
 | `8` | Warm editorial serif |
 | `9` | Forest tech |
 | `10` | Transparent monochrome card style |
+| `11` | Blue broadcast / starting-soon inspired theme |
 
 Style-specific default fonts:
 
@@ -167,10 +168,11 @@ Style-specific default fonts:
 | `8` | `DM Serif Display` |
 | `9` | `Exo 2` |
 | `10` | `Bebas Neue` |
+| `11` | `Russo One` |
 
 ## Font Command Presets
 
-`!todo font 1` through `!todo font 10` map to:
+`!todo font 1` through `!todo font 11` map to:
 
 | Font Command | Font |
 | - | - |
@@ -184,6 +186,7 @@ Style-specific default fonts:
 | `font 8` | `DM Serif Display` |
 | `font 9` | `Exo 2` |
 | `font 10` | `Bebas Neue` |
+| `font 11` | `Russo One` |
 
 Notes:
 
